@@ -3,6 +3,7 @@
 A demo project showing an end-to-end CI/CD pipeline: FastAPI app → Docker → AWS ECR → EKS (Helm) with monitoring.
 
 ## What's included
+
 - Simple FastAPI app with health check and tests
 - Dockerfile for containerization
 - Helm chart for Kubernetes deployment + HPA
@@ -10,12 +11,14 @@ A demo project showing an end-to-end CI/CD pipeline: FastAPI app → Docker → 
 - Monitoring via prometheus-community/kube-prometheus-stack
 
 ## Prerequisites
+
 - AWS account
 - `aws` CLI configured
 - `eksctl`, `kubectl`, `helm`, `docker` installed
 - GitHub repo with secrets: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `EKS_CLUSTER_NAME`
 
 ## Quick start (dev)
+
 1. Create ECR repository:
 aws ecr create-repository --repository-name devops-cicd-k8s --region us-east-1
 
