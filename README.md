@@ -60,6 +60,21 @@ Access Grafana dashboard via port-forward.
 - Add GitOps with ArgoCD for declarative deployments
 - Use IRSA for secure secret access
 
+## Architecture Diagram
+
+```mermaid
+flowchart LR
+  Developer -->|push code| GitHub[GitHub repo]
+  GitHub -->|trigger| Actions[GitHub Actions CI]
+  Actions -->|build image| Docker[Docker Build]
+  Docker -->|push| ECR[AWS ECR]
+  Actions -->|helm deploy| EKS_Cluster(Helm)
+  EKS -->|serves| Clients[Users]
+  EKS -->|metrics| Prom[Prometheus]
+  Prom --> Graf[Grafana]
+  SecretsMgr[AWS Secrets Manager] --> EKS
+```
+
 ## License
 
 MIT
