@@ -30,14 +30,17 @@ visit http://localhost:8000
 4. Push code to GitHub and let Actions run CI/CD (ensure secrets added).
 
 ## How CI/CD works
+
 - On push to `main`, GitHub Actions:
+
 1. Runs pytest
 2. Builds Docker image, tags it with the commit SHA
 3. Pushes image to ECR
 4. Updates Helm release on EKS
 
 ## Monitoring
-Install Prometheus & Grafana:
+
+### Install Prometheus & Grafana (using helm)
 
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 
@@ -48,10 +51,12 @@ helm install monitoring prometheus-community/kube-prometheus-stack -n monitoring
 Access Grafana dashboard via port-forward.
 
 ## Next steps / improvements
+
 - Add automated image tag promotion between environments
 - Integrate Snyk / tfsec / benchmark scans
 - Add GitOps with ArgoCD for declarative deployments
 - Use IRSA for secure secret access
 
 ## License
+
 MIT
