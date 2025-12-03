@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "devops-cicd-k8s.fullname" . }}-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    # Uncomment below if using cert-manager for TLS
+    # cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "devops-cicd-k8s.fullname" . }}
+                port:
+                  number: {{ .Values.service.port }}
+  # Optional TLS configuration
+  # tls:
+  #   - hosts:
+  #       - {{ .Values.ingress.host }}
+  #     secretName: {{ include "devops-cicd-k8s.fullname" . }}-tls
