@@ -28,7 +28,7 @@ eksctl create cluster --name devops-cicd-cluster --region us-east-1 --node-type 
 3. Build and run locally:
 docker build -t devops-cicd-k8s:local .
 docker run -p 8000:8000 devops-cicd-k8s:local
-visit http://localhost:8000
+visit <http://localhost:8000>
 
 4. Push code to GitHub and let Actions run CI/CD (ensure secrets added).
 
@@ -45,7 +45,7 @@ visit http://localhost:8000
 
 ### Install Prometheus & Grafana (using helm)
 
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add prometheus-community <https://prometheus-community.github.io/helm-charts>
 
 helm repo update
 
